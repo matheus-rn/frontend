@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
 
-function App() {
+import './styles/global.css';
+import './styles/App.css';
+import './styles/Main.css';
+import CardItem from './components/CardItem';
+import HeaderTools from './components/HeaderTools';
+
+const App = () => {
+  const [tools, setTools] = useState([]);
+
+  useEffect(() => {
+    async function loadTools() {
+      const response = {
+        name: 'matheus',
+        link: 'http://loca.com',
+        description: 'dasda',
+        tags: ['node'],
+      };
+
+      setTools([...tools, response]);
+    }
+
+    loadTools();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <main>
+        <HeaderTools />
+        <CardItem />
+        <CardItem />
+      </main>
     </div>
   );
-}
+};
 
 export default App;
