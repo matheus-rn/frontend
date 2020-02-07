@@ -1,14 +1,20 @@
-import React from 'react';
-
-import Button from '@material-ui/core/Button';
-
+import React, { useState } from 'react';
+import Typography from '@material-ui/core/Typography';
+import Checkbox from '@material-ui/core/Checkbox';
 import SearchIcon from '@material-ui/icons/Search';
-import { Container, TextFieldHearder } from './styles';
+import { Container, TextFieldHearder, TagSearch } from './styles';
+import ButtonFormTool from '../ButtonFormTool';
 
 export default function HeaderTools() {
+  const [checked, setChecked] = useState(false);
+
+  const handleChange = event => {
+    setChecked(event.target.checked);
+  };
+
   return (
     <Container>
-      <div>
+      <TagSearch>
         <TextFieldHearder
           margin="dense"
           id="toolSearch"
@@ -18,11 +24,18 @@ export default function HeaderTools() {
             endAdornment: <SearchIcon />,
           }}
         />
-      </div>
+        <Checkbox
+          checked={checked}
+          onChange={handleChange}
+          color="primary"
+          inputProps={{ 'aria-label': 'secondary checkbox' }}
+        />
+        <Typography component={'span'} color="textSecondary" gutterBottom>
+          pesquisar por tag
+        </Typography>
+      </TagSearch>
 
-      <Button variant="outlined" color="secondary" size="small">
-        Remover
-      </Button>
+      <ButtonFormTool />
     </Container>
   );
 }

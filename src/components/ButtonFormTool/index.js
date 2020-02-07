@@ -26,7 +26,7 @@ export default function ButtonFormTool() {
         onClick={handleClickOpen}
         startIcon={<AddCircleIcon />}
       >
-        Cadastrar
+        Adicionar
       </Button>
       <Dialog
         open={open}
